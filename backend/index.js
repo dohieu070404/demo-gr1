@@ -15,7 +15,7 @@ import multer from "multer";
 dotenv.config();
 
 const app = express();
-
+Connection();
 app.use(express.json()); // send any json file/object
 app.use(cors());
 
@@ -47,6 +47,3 @@ app.listen("3000", () => {
   console.log("server is running");
 });
 
-const USERNAME = process.env.DB_USERNAME;
-const PASSWORD = process.env.PASSWORD;
-Connection(USERNAME, PASSWORD);

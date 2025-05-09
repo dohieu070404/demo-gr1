@@ -1,19 +1,16 @@
 import mongoose from "mongoose";
 
-
-const Connection = async (username, password) => {
-  const URL = `mongodb+srv://prathmesh300346562:douglas123@synchomecluster.p8a4wyk.mongodb.net/SyncHome?retryWrites=true&w=majority`;
-  
-  mongoose.set("strictQuery", false);
-  try {
-    await mongoose.connect(URL, {
-      useNewUrlParser: true,
-    });
-
-    console.log("database connected");
-  } catch (error) {
-    console.log("Error database connection ", error);
-  }
+const Connection= async () => {
+    try {
+        const conn = await mongoose.connect( 'mongodb+srv://dohieu:11223344@cluster0.yx0gtlz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log(`MongoDB Connected: ${conn.connection.host}`);
+    } catch (error) {
+        console.error(`Error: ${error.message}`);
+        process.exit(1);
+    }
 };
 
 export default Connection;
